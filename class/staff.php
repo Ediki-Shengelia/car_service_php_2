@@ -25,5 +25,11 @@ class Staff extends Db_object
     public $role;
     public $salary;
     public $hire_date;
-    
+    public static function getUserInfo($id)
+    {
+        $sql = "SELECT * FROM staff WHERE id=" . (int)$id;
+        $result = self::find_this_query($sql);
+        $staff = array_shift($result);
+        return $staff ? $staff->user_id : null;
+    }
 }
