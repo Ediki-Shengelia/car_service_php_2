@@ -3,6 +3,15 @@ require_once __DIR__ . '/partials/header.php';
 
 $services = Service::find_all();
 
+
+$working_hours = Working_hours::find_all();
+
+foreach ($working_hours as $wh) {
+    // ვამოწმებთ, რომ თარიღი მითითებულია და ის წარსულშია (<)
+    if (!empty($wh->date_for_day_off) && $wh->date_for_day_off < date("Y-m-d")) {
+        Working_hours::refresh_day_off($wh->staff_id, $wh->day_of_week, $wh->date_for_day_off);
+    }
+}
 ?>
 
 <h1 style="font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; margin-bottom: 16px;">Index for admin</h1>

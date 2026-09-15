@@ -27,11 +27,19 @@ $staffs = Staff::find_all();
     <tbody>
         <?php foreach ($staffs as $index => $staff): ?>
             <tr style="background-color: <?= $index % 2 === 0 ? '#ffffff' : '#f9fafb'; ?>;">
-                <td style="padding: 12px 14px; text-align: left; font-size: 0.9rem; color: #374151; border-bottom: 1px solid #e5e7eb;"><?= $staff->id; ?></td>
+                <td style="padding: 12px 14px; text-align: left; font-size: 0.9rem; color: #374151; border-bottom: 1px solid #e5e7eb;">
+                    <?= $staff->id; ?>
+                    <div>
+                        <a href="day_off.php?staff_id=<?= $staff->id; ?>">Day off</a>
+                    </div>
+                </td>
                 <td style="padding: 12px 14px; text-align: left; font-size: 0.9rem; color: #374151; border-bottom: 1px solid #e5e7eb;"><?= User::find_by_id($staff->user_id)->name; ?></td>
                 <td style="padding: 12px 14px; text-align: left; font-size: 0.9rem; color: #374151; border-bottom: 1px solid #e5e7eb;"><?= User::find_by_id($staff->user_id)->email; ?></td>
                 <td style="padding: 12px 14px; text-align: left; font-size: 0.9rem; color: #374151; border-bottom: 1px solid #e5e7eb;"><?= $staff->phone; ?></td>
-                <td style="padding: 12px 14px; text-align: left; font-size: 0.9rem; color: #374151; border-bottom: 1px solid #e5e7eb;"><?= $staff->status; ?></td>
+                <td style="padding: 12px 14px; text-align: left; font-size: 0.9rem; color: #374151; border-bottom: 1px solid #e5e7eb;">
+                    <?= $staff->status; ?>
+
+                </td>
                 <td style="padding: 12px 14px; text-align: left; font-size: 0.9rem; color: #374151; border-bottom: 1px solid #e5e7eb;"><?= $staff->specialization; ?></td>
                 <td style="padding: 12px 14px; text-align: left; font-size: 0.9rem; color: #374151; border-bottom: 1px solid #e5e7eb;"><?= $staff->role; ?></td>
                 <td style="padding: 12px 14px; text-align: left; font-size: 0.9rem; color: #374151; border-bottom: 1px solid #e5e7eb;"><?= $staff->salary; ?></td>

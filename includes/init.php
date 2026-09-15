@@ -13,3 +13,5 @@ require_once __DIR__ . '/../class/user.php';
 require_once __DIR__ . '/../class/session.php';
 require_once __DIR__ . '/../class/staff.php';
 require_once __DIR__ . '/../class/service.php';
+require_once __DIR__ . '/../class/working_hours.php';
+require_once __DIR__ . '/../class/day_off.php';

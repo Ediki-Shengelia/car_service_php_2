@@ -19,6 +19,7 @@ if (isset($_POST['add_member'])) {
     $staff->status = "active";
     $staff->hire_date = date("Y-m-d");
     if ($staff->create()) {
+        Working_hours::create_working_hours_for_worker($staff->id);
         Redirect("index.php");
     }
 }
@@ -31,7 +32,7 @@ $users = User::find_all();
         <select name="user_id" id="">
             <option value="">Select Member</option>
             <?php foreach ($users as $user): ?>
-                <?php if ($user->role != "admin"): ?>
+                <?php if ($user->role == "user"): ?>
                     <option value="<?= $user->id ?>"><?= $user->name; ?></option>
 
                 <?php endif; ?>
